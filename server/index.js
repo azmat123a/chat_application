@@ -5,12 +5,12 @@ const userRoutes = require('./_routes/users/users');
 const imageRoutes = require('./_routes/uploads/uploads');
 
 const app = express();
-
+require('dotenv').config()
 app.use(cors());
 app.use(express.json());
 
 // Replace the connection string below with the one you got from MongoDB Atlas
-const uri = "mongodb+srv://chat_application_user:123456.a@chatapplication.wfq1c87.mongodb.net/chat_application?retryWrites=true&w=majority";
+const uri = process.env.DB_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
