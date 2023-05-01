@@ -1,0 +1,141 @@
+@import '../../colors.css';
+
+.main_container_login {
+    border: var(--light-border-primary) 1px solid;
+    border-radius: 1em;
+    width: 30em;
+    height: fit-content;
+    margin-top: 8em;
+    font-family: 'poppins';
+    padding-bottom: 1em;
+    box-shadow: var(--shadow);
+
+}
+
+@media (max-width: 768px) {
+    .main_container_login {
+        padding: 1em;
+        width: 100%;
+        height: auto;
+        margin: .5em !important;
+        padding-bottom: 2em !important;
+    }
+
+    .react-tel-input {
+        width: 100% !important;
+    }
+}
+
+.react-tel-input {
+    margin-top: 3em !important;
+}
+
+.form-control {
+    height: 3.5em;
+    border: 1px solid var(--light-grey) !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+    background-color: transparent !important;
+    outline: none !important;
+    border: 1px solid black !important;
+
+}
+
+
+.flag-dropdown {
+    background: transparent !important;
+    border: none !important;
+}
+
+.select-flag {
+    background: transparent !important;
+}
+
+.otp_btn {
+    background: black;
+    margin-top: 2em;
+    border-radius: 50px;
+    color: var(--light-background);
+    width: 14em;
+    font-weight: lighter;
+    border: none;
+    height: 3em;
+    margin-bottom: 3em;
+}
+
+.otp_btn:hover {
+    color: var(--light-grey);
+    background: black;
+}
+.otp_btn:disabled {
+    color: var(--light-grey);
+    background: black !important;
+}
+
+.country-list {
+    text-align: left;
+}
+
+.main_container_login h4 {
+    color: var(--light-background);
+    font-weight: 800;
+}
+
+.main_container_login h2 {
+    margin-top: -1.5em;
+    margin-bottom: 2em;
+}
+
+
+.opt-container input {
+    border: 1px solid var(--light-grey) !important;
+    border-radius: 5px;
+}
+
+.opt-container input:focus {
+    border: 1px black solid !important;
+    outline: none !important;
+}
+
+.otp_verify_btn {
+    background: black;
+    margin-bottom: 3em;
+    border-radius: 50px;
+    color: var(--light-background);
+    width: 14em;
+    font-weight: lighter;
+    border: none;
+    height: 3em;
+}
+
+.otp_verify_btn:hover {
+    color: var(--light-grey);
+    background: black;
+}
+.otp_verify_btn:disabled {
+    color: var(--light-grey);
+    background: black;
+}
+
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+    color: var(--light-background);
+    margin-left: 2em;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .main_container_login .error_message{
+    font-size: 10pt;
+    color: red;
+  }

@@ -1,0 +1,14 @@
+.message-conatiner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 24px;
+  isolation: isolate;
+
+  position: absolute;
+  width: 680px;
+  height: 614px;
+  left: calc(50% - 680px / 2 + 20px);
+  top: 64px;
+}
