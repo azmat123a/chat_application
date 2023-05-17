@@ -19,3 +19,45 @@
     -2px 0px 8px rgba(2, 17, 37, 0.08), -6px 0px 16px rgba(2, 17, 37, 0.04);
   border-radius: 16px 0px 0px 0px;
 }
+
+.profile-component img {
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.profile-component .user-top-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #000; */
+}
+
+.profile-component .user-top-section p {
+  margin: 0;
+  margin-left: 0.5em;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+}
+.profile-component .user-bottom-section {
+  padding: 10px 0px 0px 0px;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid#CDD5DE;
+  width: 100%;
+}
+
+.user-bottom-section p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000;
+}
+
+.user-bottom-section .heading{
+  font-weight: 700;
+font-size: 14px;
+}

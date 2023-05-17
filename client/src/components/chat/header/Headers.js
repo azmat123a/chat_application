@@ -1,13 +1,22 @@
 import { ReactComponent as Logo } from "../../../assets/logo.svg";
 import { ReactComponent as Settings } from "../../../assets/settings.svg";
 import { ReactComponent as Dots } from "../../../assets/verticalthreedots.svg";
-import ProfileImg from "../../../assets/Photo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../Context/FireBaseContext";
+import { logoutUser } from "./../../../APIS/users/user._api";
 import "./Header.css";
 const Headers = () => {
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { setIsAuthenticated, selectedUser, loggedInUser } =
+    useContext(AuthContext);
+  const handleLogout = async () => {
+    logoutUser()
+      .then((res) => {
+        setIsAuthenticated(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="header container-fluid">
       <div className="row">
@@ -15,12 +24,25 @@ const Headers = () => {
           <Logo />
         </div>
         <div className="col-8 my-auto">
-          <span>Caesar</span> last seen 5 min ago
+          <span>{selectedUser && selectedUser.firstName}</span>
+          {/* {getOtherUserStatus()} */}
         </div>
         <div className="col-2 d-flex justify-content-end align-items-center right">
           <Settings className="me-3 icon" />
-          <Dots className="me-3 icon" />
-          <img src={user.profileImage} />
+          <div className="dropdown me-3">
+            <Dots
+              className="icon dropdown-toggle"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            />
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button className="dropdown-item" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          </div>
+          <img src={loggedInUser?.profileImage} />
         </div>
       </div>
     </div>
@@ -28,3 +50,6 @@ const Headers = () => {
 };
 
 export default Headers;
+
+
+

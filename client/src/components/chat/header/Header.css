@@ -23,14 +23,32 @@
 }
 
 .header img {
-    max-width: 2.5em;
-    max-height: 2.5em;
-    border-radius: 50%;
-    background: black;
-    border: 1px solid rgb(206, 197, 197);
-    display: inline-block;
-    object-fit: cover;
-    width: 150px;
-    height: 150px;
-  }
+  max-width: 2.5em;
+  max-height: 2.5em;
+  border-radius: 50%;
+  background: black;
+  border: 1px solid rgb(206, 197, 197);
+  display: inline-block;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+}
 
+.header .dropdown-menu {
+  background-color: transparent;
+  border: transparent 0px;
+}
+.header .dropdown-menu button {
+  margin-top: .5em;
+  width: 6em;
+  background-color: rgb(255, 0, 0);
+  text-align: center;
+  color: white;
+  border-radius: 4px;
+  font-family: "poppins";
+  font-weight: 300;
+  font-size: 14px;
+}
+.header .dropdown-menu button:hover {
+  background-color: rgb(241, 9, 9, 0.6);
+}

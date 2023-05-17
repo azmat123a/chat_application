@@ -9,6 +9,9 @@ const userSchema = new Schema({
   username: { type: String, required: true },
   bio: { type: String },
   profileImage: { type: String },
+  mobile: { type: String, required: true },
+  online: { type: Boolean, default: true },
+  lastSeen: { type: Date },
 });
 
 const User = mongoose.model("User", userSchema);

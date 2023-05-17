@@ -12,6 +12,78 @@
   bottom: 0px;
   background: #ffffff;
   border-right: 1px solid #cdd5de;
-  
+
   margin-top: 0.1em;
+}
+.search-component input {
+  max-width: 271px;
+  width: 80%;
+  padding-left: 1em;
+  border: 1px solid var(--border);
+  height: 32px;
+  border-radius: 8px;
+  color: #8fa0af;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.search-component input:focus {
+  border: 2px solid var(--border);
+  outline: none;
+}
+
+.user-inbox {
+  /* background: #863737; */
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  /* background: #000; */
+  justify-content: center;
+  align-items: center;
+}
+
+.user-inbox img {
+  max-width: 2.5em;
+  max-height: 2.5em;
+  border-radius: 50%;
+  background: black;
+  border: 1px solid rgb(206, 197, 197);
+  display: inline-block;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+  margin-right: .5em;
+}
+
+.user-inbox .user {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 0.5em;
+  width: 100%;
+  /* background: olive; */
+}
+
+.user-inbox .user p {
+  line-height: 0;
+}
+
+#name {
+  margin-top: 0.8em;
+  font-weight: 600;
+  font-size: 12pt;
+  margin-right: 4em;
+  color: black;
+}
+#time {
+  margin-top: 0.8em;
+  font-weight: 300;
+  font-size: 10pt;
+  color: #8fa0af;
+ 
+}
+#last-message {
+  font-weight: 400;
+  font-size: 12pt;
+  color: var(--text-light);
 }

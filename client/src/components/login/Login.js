@@ -11,7 +11,7 @@ import { CgSpinnerTwo } from "react-icons/cg";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/FireBaseContext";
-import { checkUserExists } from "../../APIS/users/user";
+import { checkUserExists } from "../../APIS/users/user._api";
 
 //
 import "./login.css";
@@ -25,7 +25,8 @@ function App() {
   const [errMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext);
+  const { setUser, setLoggedInUser, setIsAuthenticated } =
+    useContext(AuthContext);
   /*
    *Built in captcha functionality
    */
@@ -49,6 +50,7 @@ function App() {
    *Sign in method
    */
   const handle_otp_send = () => {
+    // redirectUser("WgTArHQRoGf3P5PJAMHpZ2oq3rn1");
     setDisable(true);
     setLoading(true);
     onCaptchVerify();
@@ -81,7 +83,7 @@ function App() {
     window.confirmationResult
       .confirm(otp)
       .then(async (res) => {
-        redirectUser(res.user.uid);
+        redirectUser(res.user.uid, res.user.phoneNumber);
         setLoading(false);
         setDisable(false);
         setErrMsg("");
@@ -95,20 +97,23 @@ function App() {
   };
 
   /*
-  * user navigation to specific page 
-  */
+   * user navigation to specific page
+   */
   const redirectUser = async (userId) => {
-    console.log(userId);
     const response = await checkUserExists(userId);
+
     if (response && response.exists) {
       // Update the user state in AuthContext
-      setUser(response.user);
-      // Redirect to the chat page
+
+      setLoggedInUser(response.user);
+      setIsAuthenticated(true);
       navigate("/chat");
     } else if (response && !response.exists) {
       // Update the user state in AuthContext with a temporary user object
-      setUser({ userId });
+   
+      setUser({ userId, phoneNumber });
       // Redirect to the profile completion page
+      setIsAuthenticated(true);
       navigate("/profile");
     } else {
       // Handle error (e.g., show a message to the user)

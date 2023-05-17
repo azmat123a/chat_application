@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { CgSpinnerTwo } from "react-icons/cg";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/FireBaseContext";
-import { createUserProfile, uploadImage } from "../../APIS/users/user";
-
+import { createUserProfile, uploadImage } from "../../APIS/users/user._api";
+import { useNavigate } from "react-router-dom";
 import "./profile.css";
 
 const Profile = () => {
@@ -13,12 +13,15 @@ const Profile = () => {
     username: "",
     bio: "",
     profileImage: "",
+    mobile:""
   });
   const [submitDisable, SetSubmitDisable] = useState(false);
   const [preview, setPreview] = useState(null);
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user,setLoggedInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  // const { setUser } = useContext(AuthContext);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -54,8 +57,10 @@ const Profile = () => {
     SetSubmitDisable(true);
     setLoading(true);
     if (preview) {
-      const img_url = await uploadImage(formData);
-      console.log(img_url);
+      const img_url =await uploadImage(formData);
+        // "https://firebasestorage.googleapis.com/v0/b/uploads-50ead.appspot.com/o/images%5C34dad127-ba30-4ab1-9762-8bd79bb4d1e0.jpeg?alt=media";
+     
+      // console.log(img_url);
       try {
         const userData = {
           uid: user.userId, // Replace with actual user's mobile number
@@ -64,11 +69,14 @@ const Profile = () => {
           username: formData.username,
           bio: formData.bio,
           profileImage: img_url,
+          mobile:user.phoneNumber,
         };
-
+        console.log(user);
         createUserProfile(userData)
-          .then((user) => {
-            console.log(user);
+          .then((userData) => {
+            // console.log(user);
+            setLoggedInUser(userData);
+            navigate("/chat");
             SetSubmitDisable(false);
             setLoading(false);
           })
