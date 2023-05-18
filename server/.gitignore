@@ -1,5 +1,6 @@
 # Ignore node_modules directory
 node_modules/
+.env
 
 # Ignore config files
 uploads-50ead-firebase-adminsdk-7z7uz-6eb0dbfc95.json
